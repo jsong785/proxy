@@ -1,0 +1,17 @@
+[package]
+name = "proxy"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = "4.9.0"
+anyhow = "1.0.86"
+config = "0.14.0"
+const_format = "0.2.32"
+serde = "1.0.208"
+serde_derive = "1.0.208"
+tokio = { version = "1.39.2", features = ["rt-multi-thread", "rt", "macros"] }
+tokio-macros = "2.4.0"
+
+[dev-dependencies]
+serial_test = "3.1.1"
