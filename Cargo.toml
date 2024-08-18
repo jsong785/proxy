@@ -4,10 +4,13 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+actix-proxy = "0.2.0"
 actix-web = "4.9.0"
 anyhow = "1.0.86"
+awc = "3.5.1"
 config = "0.14.0"
 const_format = "0.2.32"
+futures = "0.3.30"
 serde = "1.0.208"
 serde_derive = "1.0.208"
 tokio = { version = "1.39.2", features = ["rt-multi-thread", "rt", "macros"] }

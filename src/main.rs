@@ -1,16 +1,19 @@
-use actix_web::{get, web, App, HttpServer, Responder};
+use actix_web::web;
+
+use actix_web::{App, HttpServer};
 
 mod config;
+mod proxy;
 
-#[get("/hello/{name}")]
-async fn greet(name: web::Path<String>) -> impl Responder {
-    format!("Hello {name}!")
-}
-
-#[actix_web::main] // or #[tokio::main]
+#[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().service(greet))
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+    println!("bye");
+    HttpServer::new(|| {
+        App::new()
+            .service(web::resource("/proxy/{url:.*}").route(web::to(proxy::proxy)))
+            .app_data(web::Data::new(awc::Client::default()))
+    })
+    .bind(("127.0.0.1", 8080))?
+    .run()
+    .await
 }
