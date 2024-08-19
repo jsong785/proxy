@@ -1,3 +1,3 @@
-FROM arm64v8/rust:1.80-bullseye as prod
-COPY ./release_output/release/ ./
+FROM rust:1.80-bullseye as prod
+COPY ./build_output/debug/ ./
 ENTRYPOINT ./proxy
