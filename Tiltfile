@@ -17,10 +17,11 @@ docker_build_with_restart(
     sync('./build_output/debug/', '/'),
   ],
 )
-k8s_yaml('proxy.yaml')
-k8s_resource('proxy', port_forwards=[8080],
-             resource_deps=['proxy-rust-compile'])
 
 local_resource('mockserver',
                cmd='',
                serve_cmd='docker run --platform linux/amd64 --rm -p 123:123 --env MOCKSERVER_LOG_LEVEL=TRACE --env MOCKSERVER_SERVER_PORT=123 mockserver/mockserver')
+
+k8s_yaml('proxy.yaml')
+k8s_resource('proxy', port_forwards=[8080],
+             resource_deps=['proxy-rust-compile'])
