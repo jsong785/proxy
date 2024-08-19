@@ -15,6 +15,7 @@ serde = "1.0.208"
 serde_derive = "1.0.208"
 tokio = { version = "1.39.2", features = ["rt-multi-thread", "rt", "macros"] }
 tokio-macros = "2.4.0"
+url = "2.5.2"
 
 [dev-dependencies]
 serial_test = "3.1.1"

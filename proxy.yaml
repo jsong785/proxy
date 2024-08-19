@@ -22,25 +22,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: backend-ide
+  name: localhost-machine
 spec:
   type: ExternalName
-  externalName: localhost
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: backend-ingress
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: mockserver.com
-      http:
-        paths:
-          - path: /(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-ide
-                port:
-                  number: 123
+  externalName: host.docker.internal
